@@ -12,6 +12,10 @@ public class Deck {
 	private final String[] colors = { "Blue", "Yellow", "Green", "Red" };
 	
 	public Deck() {
+		this.addCards();
+	}
+	
+	private void addCards() {
 		for (String i : colors) {
 			for (int j = 0; j <= 12; j++) {
 				this.deck.add(new Card(i, j));
@@ -26,7 +30,7 @@ public class Deck {
 		}
 	}
 
-	public void Shuffle() {
+	public void shuffle() {
 		Collections.shuffle(this.deck);
 	}
 	
@@ -39,18 +43,30 @@ public class Deck {
 	}
 	
 	public void resetDeck() {
-		
+		this.latestCard = this.discard.getLast();
+		this.discard.clear();
+		this.deck.clear();
+		this.addCards();
+		this.shuffle();
+	}
+	
+	public void printSize() { //for testing purposes
+		System.out.println(this.deck.size()+", "+this.discard.size());
 	}
 	
 	
 	/*
 	public static void main(String[] args) {
 		Deck d = new Deck();
-		d.Shuffle();
-		for (Card card : d.deck) {
-			System.out.println(card);
-		}
+		d.shuffle();
+		d.printSize();
+		Card test = d.drawCard();
+		d.addToDiscard(test);
+		d.printSize();
+		d.resetDeck();
+		d.printSize();
+		
 	}
-
 	**/
+	
 }
