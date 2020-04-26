@@ -93,7 +93,7 @@ public class UnoGame {
 	 * and change the play direction, lastPlayer if necessary
 	 * @return index of the next player
 	 */
-	public int getNextPlayer() {
+	public int updateNextPlayer() {
 		if(playDirection) {// play direction is to the right
 			if(lastPlayedCard.value==11) {// lastPlayedCard is Reverse
 				lastPlayer = (lastPlayer-1)%playerNumber;
@@ -121,6 +121,14 @@ public class UnoGame {
 		}
 	}
 	
+	public void updatePenalty() {
+		if(lastPlayedCard.value==12) {// last played card is +2
+			penalty += 2;
+		}else if(lastPlayedCard.value==-1 && lastPlayedCard.type.equals("Wild+4")) {// last card is +4
+			penalty += 4;
+		}
+	}
+	
 	/**
 	 * move to the next round
 	 * change the lastPlayedCard and playDirection
@@ -128,11 +136,21 @@ public class UnoGame {
 	 * if no card can play, draw
 	 */
 	public void oneRound() {
-		
-		
-		
-		// change the penalty to default value
-		penalty = 1;
+		lastPlayer = this.updateNextPlayer();
+		if(players[lastPlayer].cardsCanPlay(lastPlayedCard).size()!=0) {// next player have card to play
+			// choose one card to play
+			lastPlayedCard = players[lastPlayer].play();
+			this.updatePenalty();
+		}else { // next player have no card to play
+			// draw cards according to the penalty
+			for(int i=0; i<penalty; i++) {
+				players[lastPlayer].draw(deck.drawCard());
+			}
+			// change the penalty to default value 
+			penalty = 1;
+		}
+				
+
 	}
 	
 	public void run() {
