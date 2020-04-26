@@ -39,7 +39,13 @@ public class Deck {
 	}
 	
 	public Card drawCard() {
-		return this.deck.poll();
+		if(this.deck.size() > 0) {
+			return this.deck.poll();
+		} else {
+			this.resetDeck();
+			return this.deck.poll();
+		}
+		
 	}
 	
 	public void resetDeck() {
