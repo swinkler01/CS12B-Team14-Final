@@ -6,9 +6,10 @@ import java.util.LinkedList;
 public class Deck {
 
 	private LinkedList<Card> deck = new LinkedList<Card>();
+	private LinkedList<Card> discard = new LinkedList<Card>();
 
 	private final String[] colors = { "Blue", "Yellow", "Green", "Red" };
-
+	
 	public Deck() {
 		for (String i : colors) {
 			for (int j = 0; j <= 12; j++) {
@@ -27,11 +28,9 @@ public class Deck {
 	public void Shuffle() {
 		Collections.shuffle(this.deck);
 	}
-
-	public void Deal() {
-		
-	}
-
+	
+	
+	/*
 	public static void main(String[] args) {
 		Deck d = new Deck();
 		d.Shuffle();
@@ -40,4 +39,5 @@ public class Deck {
 		}
 	}
 
+	**/
 }
