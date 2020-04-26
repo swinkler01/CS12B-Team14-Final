@@ -39,6 +39,15 @@ public class Player {
 		}
 		return playable;
 	}
+	
+	/**
+	 * player choose one card to play
+	 * and remove the card from hand
+	 * @return the card to play
+	 */
+	public Card play() {
+		return null;
+	}
 
 	
 }
