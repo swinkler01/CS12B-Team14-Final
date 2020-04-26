@@ -16,7 +16,7 @@ public class Card {
 	}
 
 	public String toString() {
-		return "Type: " + this.type + ", Value:" + this.value;
+		return "Type: " + this.type + ", Value: " + this.value;
 	}
 
 }
