@@ -32,9 +32,13 @@ public class Deck {
 
 	}
 
-	/**
-	 * public static void main(String[] args) { Deck d = new Deck(); for(Card
-	 * card:d.deck) { System.out.println(card); } d.Shuffle(); for(Card card:d.deck)
-	 * { System.out.println(card); } }
-	 */
+	
+	 public static void main(String[] args) { 
+		Deck d = new Deck(); 
+		d.Shuffle(); 
+		for(Card card:d.deck) { 
+			System.out.println(card); 
+		}
+	}
+
 }
