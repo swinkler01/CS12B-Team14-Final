@@ -13,16 +13,6 @@ public class Player {
 		this.getHand().add(c);
 	}
 	
-	/**
-	 * According to the previousCard, show the list of cards
-	 * which you can play
-	 * @param previousCard
-	 * @return a list of cards in your hand that you can play
-	 */
-	public ArrayList<Card> cardsCanPlay(Card previousCard){
-		return null;
-	}
-
 	public ArrayList<Card> getHand() {
 		return hand;
 	}
@@ -31,4 +21,24 @@ public class Player {
 		this.hand = hand;
 	}
 
+	
+	/**
+	 * According to the previousCard, show the list of cards
+	 * which you can play
+	 * @param previousCard
+	 * @return a list of cards in your hand that you can play
+	 */
+	public ArrayList<Card> cardsCanPlay(Card previousCard){
+		
+		ArrayList<Card> playable = new ArrayList<Card>();
+		
+		for (Card c: getHand()) {
+			 if(c.type == previousCard.type || c.value == previousCard.value || c.value == -1) {
+				 playable.add(c);
+			 }
+		}
+		return playable;
+	}
+
+	
 }
