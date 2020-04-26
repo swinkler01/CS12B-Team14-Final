@@ -14,7 +14,7 @@ public class Player {
 	}
 	
 	/**
-	 * According to the preciousCard, show the list of cards
+	 * According to the previousCard, show the list of cards
 	 * which you can play
 	 * @param previousCard
 	 * @return a list of cards in your hand that you can play
