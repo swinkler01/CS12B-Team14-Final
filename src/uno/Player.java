@@ -6,11 +6,11 @@ public class Player {
 	private ArrayList<Card> hand;
 	
 	public Player(ArrayList<Card> hand) {
-		this.hand = hand;
+		this.setHand(hand);
 	}
 	
 	public void draw(Card c) {
-		this.hand.add(c);
+		this.getHand().add(c);
 	}
 	
 	/**
@@ -21,6 +21,14 @@ public class Player {
 	 */
 	public ArrayList<Card> cardsCanPlay(Card previousCard){
 		return null;
+	}
+
+	public ArrayList<Card> getHand() {
+		return hand;
+	}
+
+	public void setHand(ArrayList<Card> hand) { // added getter and setter 
+		this.hand = hand;
 	}
 
 }
