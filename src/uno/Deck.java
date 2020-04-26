@@ -1,10 +1,10 @@
 package uno;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Deck {
 	
-	private ArrayList<Card> deck = new ArrayList<Card>();
+	private LinkedList<Card> deck = new LinkedList<Card>();
 	
 	public Deck() {
 		
