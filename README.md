@@ -8,4 +8,4 @@
 - Thomas Vandalovsky, tvandalovsky@brandeis.edu, Github ID: tvandalovsky
 
 ## Project Document:
-https://docs.google.com/document/d/1P3W1zGPbF34GHjhNT7Joqoxu8aVibS2qUf8xU3qm1DY/edit
+https://docs.google.com/document/d/1P3W1zGPbF34GHjhNT7Joqoxu8aVibS2qUf8xU3qm1DY/edit?usp=sharing
