@@ -159,7 +159,7 @@ public class UnoGame {
 		}
 		System.out.println("Game is over");
 		// print out the winner
-		System.out.printf("Winner is Player%s", playerNumber);
+		//System.out.printf("Winner is Player%s", playerNumber);
 		
 		
 	}
