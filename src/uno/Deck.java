@@ -7,6 +7,7 @@ public class Deck {
 
 	private LinkedList<Card> deck = new LinkedList<Card>();
 	private LinkedList<Card> discard = new LinkedList<Card>();
+	private Card latestCard;
 
 	private final String[] colors = { "Blue", "Yellow", "Green", "Red" };
 	
@@ -27,6 +28,18 @@ public class Deck {
 
 	public void Shuffle() {
 		Collections.shuffle(this.deck);
+	}
+	
+	public void addToDiscard(Card c) {
+		this.discard.add(c);
+	}
+	
+	public Card drawCard() {
+		return this.deck.poll();
+	}
+	
+	public void resetDeck() {
+		
 	}
 	
 	
