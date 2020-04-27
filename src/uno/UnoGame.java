@@ -72,6 +72,8 @@ public class UnoGame {
 		players[playerNumber-1] = new User_Player(userHand);
 		// draw one card from the deck, set it as the lastPlayedCard
 		lastPlayedCard = deck.drawCard();
+		System.out.println("UNO! Game Start!");
+		System.out.printf("Initial card is %s \n", lastPlayedCard.toString());
 	}
 	
 	/**
@@ -141,13 +143,13 @@ public class UnoGame {
 			// choose one card to play
 			lastPlayedCard = players[lastPlayer].play(lastPlayedCard);
 			this.updatePenalty();
-			System.out.printf("Player %d played card %s", lastPlayer, lastPlayedCard.toString());
+			System.out.printf("Player %d played card %s \n", lastPlayer, lastPlayedCard.toString());
 		}else { // next player have no card to play
 			// draw cards according to the penalty
 			for(int i=0; i<penalty; i++) {
 				players[lastPlayer].draw(deck.drawCard());
 			}
-			System.out.printf("Player %d has no cards to play, and draw %d times", lastPlayer, penalty);
+			System.out.printf("Player %d has no cards to play, and draw %d times \n", lastPlayer, penalty);
 			// change the penalty to default value 
 			penalty = 1;
 			
