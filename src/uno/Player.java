@@ -2,7 +2,7 @@ package uno;
 
 import java.util.ArrayList;
 
-public abstract class Player {
+public abstract class Player { // parent class to user_player and AI_player
 	private ArrayList<Card> hand;
 	
 	public Player(ArrayList<Card> hand) {

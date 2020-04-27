@@ -5,7 +5,7 @@ public class Card {
 	String type;
 	int value;
 
-	public Card(String type, int value) {
+	public Card(String type, int value) { //creates the cards 
 		this.type = type;
 		this.value = value;
 	}
