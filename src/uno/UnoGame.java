@@ -46,7 +46,6 @@ public class UnoGame {
 		this.deck = new Deck();
 		// Assume user player is the first one to play
 		this.lastPlayer = playerNum;
-			
 	}
 	
 	/**
@@ -95,16 +94,16 @@ public class UnoGame {
 	
 	/**
 	 * Check if game is over
-	 * @return true if game is done
+	 * @return the index of the player who win, -1 if game is still on
 	 */
-	public boolean gameDone() {
+	public int gameDone() {
 		// if there is one player's hand is size 0, game is done
-		for(Player p: players) {
-			if(p.getHand().size()==0) {
-				return true;
-			}
+		for(int i=0; i<playerNumber; i++) {
+			if(players[i].getHand().size()==0) {
+				return i;
+			}			
 		}
-		return false;
+		return -1;
 	}
 	
 	/**
@@ -154,9 +153,17 @@ public class UnoGame {
 	
 	public void updatePenalty() {
 		if(lastPlayedCard.value==12) {// last played card is +2
-			penalty += 2;
+			if(penalty==1) {
+				penalty = 2;
+			}else {
+				penalty += 2;
+			}			
 		}else if(lastPlayedCard.value==-1 && lastPlayedCard.type.equals("Wild+4")) {// last card is +4
-			penalty += 4;
+			if(penalty==1) {
+				penalty = 4;
+			}else {
+				penalty += 4;
+			}
 		}
 	}
 	
@@ -183,24 +190,50 @@ public class UnoGame {
 			penalty = 1;
 			
 		}
+		
 				
 
 	}
 	
 	public void run() {
-		while(!gameDone()) {
+		while(this.gameDone()==-1) {
 			this.oneRound();
 		}
 		System.out.println("Game is over");
 		// print out the winner
-		//System.out.printf("Winner is Player%s", playerNumber);
+		System.out.printf("Winner is Player%s", this.gameDone());
 		
 		
 	}
 	
 	public static void main(String[] args) {
-		UnoGame testGame = new UnoGame(4);
+		UnoGame testGame = new UnoGame(2);
 		testGame.initiate();
+//		System.out.println(testGame.players[0].getHand().get(0).toString());
+//		System.out.println(testGame.players[0].getHand().get(1).toString());
+//		System.out.println(testGame.players[0].getHand().get(2).toString());
+//		System.out.println(testGame.players[0].getHand().get(3).toString());
+//		System.out.println(testGame.players[0].getHand().get(4).toString());
+		
+//		System.out.println("player 0's hand: **************");
+//		testGame.players[0].printHand();
+//		System.out.println("player 1's hand: **************");
+//		testGame.players[1].printHand();
+//		
+//		testGame.oneRound();
+//		System.out.println("player 0's hand: **************");
+//		testGame.players[0].printHand();
+//		System.out.println("player 1's hand: **************");
+//		testGame.players[1].printHand();
+//		System.out.println(" ");
+//		
+//		testGame.oneRound();
+//		System.out.println("player 0's hand: **************");
+//		testGame.players[0].printHand();
+//		System.out.println("player 1's hand: **************");
+//		testGame.players[1].printHand();
+		
+		
 		testGame.run();
 		
 			
