@@ -69,7 +69,7 @@ public class UnoGame {
 		for(int j=0; j<initialHandNum; j++) {
 			userHand.add(deck.drawCard());
 		}
-		players[playerNumber] = new User_Player(userHand);
+		players[playerNumber-1] = new User_Player(userHand);
 		// draw one card from the deck, set it as the lastPlayedCard
 		lastPlayedCard = deck.drawCard();
 	}
@@ -133,7 +133,7 @@ public class UnoGame {
 	 * move to the next round
 	 * change the lastPlayedCard and playDirection
 	 * next Player choose one card to play,
-	 * if no card can play, draw
+	 * if no card can be played, draw
 	 */
 	public void oneRound() {
 		lastPlayer = this.updateNextPlayer();
@@ -141,13 +141,16 @@ public class UnoGame {
 			// choose one card to play
 			lastPlayedCard = players[lastPlayer].play();
 			this.updatePenalty();
+			System.out.printf("Player %d played card %s", lastPlayer, lastPlayedCard.toString());
 		}else { // next player have no card to play
 			// draw cards according to the penalty
 			for(int i=0; i<penalty; i++) {
 				players[lastPlayer].draw(deck.drawCard());
 			}
+			System.out.printf("Player %d has no cards to play, and draw %d times", lastPlayer, penalty);
 			// change the penalty to default value 
 			penalty = 1;
+			
 		}
 				
 
