@@ -10,7 +10,7 @@ public class User_Player extends Player {
 	
 	@Override
 	public Card play(Card previousCard) {
-		// return the card according to user's choice
+		// return the card according to user's choice, use Scanner
 		return null;
 	}
 

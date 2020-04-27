@@ -21,6 +21,10 @@ public abstract class Player {
 		this.hand = hand;
 	}
 	
+	/**
+	 * remove card from player's hand
+	 * @param i index of the card
+	 */
 	public void removeCard(int i) {
 		this.hand.remove(i);
 	}
