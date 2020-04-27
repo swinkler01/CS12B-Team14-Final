@@ -20,6 +20,10 @@ public abstract class Player {
 	public void setHand(ArrayList<Card> hand) { // added getter and setter 
 		this.hand = hand;
 	}
+	
+	public void removeCard(int i) {
+		this.hand.remove(i);
+	}
 
 	
 	/**

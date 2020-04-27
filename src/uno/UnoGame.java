@@ -54,23 +54,40 @@ public class UnoGame {
 	 * add players to the player list
 	 * draw initial hands to the players
 	 */
+//	public void initiate() {
+//		// add players #1 to #(playerNum-1), they are AI_players
+//		deck.shuffle();
+//		for(int i=0; i<playerNumber-1; i++) {
+//			ArrayList<Card> tempHand = new ArrayList<Card>();
+//			for(int j=0; j<initialHandNum; j++) {
+//				tempHand.add(deck.drawCard());
+//			}
+//		players[i] = new AI_Player(tempHand);
+//		}
+//		// add player # playerNum, the last one is User_Player
+//		ArrayList<Card> userHand = new ArrayList<Card>();
+//		for(int j=0; j<initialHandNum; j++) {
+//			userHand.add(deck.drawCard());
+//		}
+//		players[playerNumber-1] = new User_Player(userHand);
+//		// draw one card from the deck, set it as the lastPlayedCard
+//		lastPlayedCard = deck.drawCard();
+//		System.out.println("UNO! Game Start!");
+//		System.out.printf("Initial card is %s \n", lastPlayedCard.toString());
+//	}
+	
+	// test AI_Players
 	public void initiate() {
-		// add players #1 to #(playerNum-1), they are AI_players
 		deck.shuffle();
-		for(int i=0; i<playerNumber-1; i++) {
+		for(int i=0; i<playerNumber; i++) {
 			ArrayList<Card> tempHand = new ArrayList<Card>();
 			for(int j=0; j<initialHandNum; j++) {
 				tempHand.add(deck.drawCard());
 			}
 		players[i] = new AI_Player(tempHand);
 		}
-		// add player # playerNum, the last one is User_Player
-		ArrayList<Card> userHand = new ArrayList<Card>();
-		for(int j=0; j<initialHandNum; j++) {
-			userHand.add(deck.drawCard());
-		}
-		players[playerNumber-1] = new User_Player(userHand);
-		// draw one card from the deck, set it as the lastPlayedCard
+		
+		//draw one card from the deck, set it as the lastPlayedCard
 		lastPlayedCard = deck.drawCard();
 		System.out.println("UNO! Game Start!");
 		System.out.printf("Initial card is %s \n", lastPlayedCard.toString());
@@ -98,7 +115,11 @@ public class UnoGame {
 	public int updateNextPlayer() {
 		if(playDirection) {// play direction is to the right
 			if(lastPlayedCard.value==11) {// lastPlayedCard is Reverse
-				lastPlayer = (lastPlayer-1)%playerNumber;
+				if(lastPlayer-1<0) {
+					lastPlayer = lastPlayer-1+playerNumber;
+				}else {
+					lastPlayer -= 1;
+				}
 				playDirection = false; // reverse the play direction
 				return lastPlayer;
 			}else if(lastPlayedCard.value==10) {// lastPlayedCard is Skip
@@ -114,10 +135,18 @@ public class UnoGame {
 				playDirection = true; // reverse the play direction
 				return lastPlayer;
 			}else if(lastPlayedCard.value==10) {// lastPlayedCard is Skip
-				lastPlayer = (lastPlayer-2)%playerNumber;
+				if(lastPlayer-2<0) {
+					lastPlayer = lastPlayer-2+playerNumber;
+				}else {
+					lastPlayer -= 2;
+				}
 				return lastPlayer;
 			}else {// lastPlayedCard is normal card
-				lastPlayer = (lastPlayer-1)%playerNumber;
+				if(lastPlayer-1<0) {
+					lastPlayer = lastPlayer-1+playerNumber;
+				}else {
+					lastPlayer -= 1;
+				}
 				return lastPlayer;
 			}
 		}
