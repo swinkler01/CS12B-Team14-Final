@@ -55,7 +55,7 @@ public class Card {
 		Card c1 = new Card("Red", 11);
 		Card c2 = new Card("Red", 5);
 		Card c3 = new Card("Red", 11);
-		
+
 		System.out.println(c1.equals(c2));
 		System.out.println(c1.equals(c3));
 	}

@@ -94,16 +94,16 @@ public class UnoGame {
 	
 	/**
 	 * Check if game is over
-	 * @return true if game is done
+	 * @return the index of the player who win, -1 if game is still on
 	 */
-	public boolean gameDone() {
+	public int gameDone() {
 		// if there is one player's hand is size 0, game is done
-		for(Player p: players) {
-			if(p.getHand().size()==0) {
-				return true;
-			}
+		for(int i=0; i<playerNumber; i++) {
+			if(players[i].getHand().size()==0) {
+				return i;
+			}			
 		}
-		return false;
+		return -1;
 	}
 	
 	/**
@@ -196,12 +196,12 @@ public class UnoGame {
 	}
 	
 	public void run() {
-		while(!gameDone()) {
+		while(this.gameDone()==-1) {
 			this.oneRound();
 		}
 		System.out.println("Game is over");
 		// print out the winner
-		//System.out.printf("Winner is Player%s", playerNumber);
+		System.out.printf("Winner is Player%s", this.gameDone());
 		
 		
 	}
