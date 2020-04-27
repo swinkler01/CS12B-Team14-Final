@@ -51,6 +51,7 @@ public class Deck {
 	public void resetDeck() {
 		this.latestCard = this.discard.getLast();
 		this.discard.clear();
+		this.discard.add(this.latestCard);
 		this.deck.clear();
 		this.addCards();
 		this.shuffle();
