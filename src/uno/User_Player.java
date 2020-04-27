@@ -19,7 +19,7 @@ public class User_Player extends Player {
 		ArrayList<Card> userPlayer_cards = super.cardsCanPlay(previousCard); //code will prompt user to enter a card and will check if the card was playable
 		System.out.print("Your current hand: ");
 		for(Card i : userPlayer_cards) { 
-			System.out.print(i);
+			System.out.print(" "+i+" ");
 		}
 		System.out.println("Which card do you wish to play? (Enter in the 'Type' then enter the cards 'Value' )");
 		String user_cardType = in.next();
@@ -45,7 +45,7 @@ public class User_Player extends Player {
 					+ " (Enter in the 'Type' then enter the cards 'Value' )");
 			System.out.print("Your current hand: ");
 			for(Card i : userPlayer_cards) { 
-				System.out.print(i);
+				System.out.print(" "+i+" ");
 			}
 			user_cardType = in.next();
 			user_cardValue = in.nextInt();
