@@ -139,7 +139,7 @@ public class UnoGame {
 		lastPlayer = this.updateNextPlayer();
 		if(players[lastPlayer].cardsCanPlay(lastPlayedCard).size()!=0) {// next player have card to play
 			// choose one card to play
-			lastPlayedCard = players[lastPlayer].play();
+			lastPlayedCard = players[lastPlayer].play(lastPlayedCard);
 			this.updatePenalty();
 			System.out.printf("Player %d played card %s", lastPlayer, lastPlayedCard.toString());
 		}else { // next player have no card to play

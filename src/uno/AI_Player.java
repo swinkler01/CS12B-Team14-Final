@@ -18,6 +18,12 @@ public class AI_Player extends Player{
 		return AI_cards.get(rand.nextInt()); 
 	}
 	
+	@Override
+	public Card play(Card previousCard) {
+		// return the 1st card you can play
+		return super.cardsCanPlay(previousCard).get(0);
+	}
+	
 	/*
 	public void draw(Card c) {
 		super.getHand().add(c);

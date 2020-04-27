@@ -2,7 +2,7 @@ package uno;
 
 import java.util.ArrayList;
 
-public class Player {
+public abstract class Player {
 	private ArrayList<Card> hand;
 	
 	public Player(ArrayList<Card> hand) {
@@ -45,9 +45,7 @@ public class Player {
 	 * and remove the card from hand
 	 * @return the card to play
 	 */
-	public Card play() {
-		return null;
-	}
+	public abstract Card play(Card previousCard);
 
 	
 }
