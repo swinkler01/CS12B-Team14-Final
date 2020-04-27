@@ -11,7 +11,7 @@ public class AI_Player extends Player{
 	
 	}
 	
-	public Card AI_Playcard(Card previousCard){ //returns random card that will be played
+	public Card AI_Playcard(Card previousCard){ //returns random card that will be played THIS CODE HAS BEEN OVERRIDED
 		
 		ArrayList<Card> AI_cards = super.cardsCanPlay(previousCard);
 		Random rand = new Random(AI_cards.size());

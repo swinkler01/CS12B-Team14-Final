@@ -28,8 +28,17 @@ public class User_Player extends Player {
 					this.removeCard(i);
 					return user_Card;
 				}
+				/*
+				if(previousCard.value == -1) {
+					if(user_Card.type == previousCard.type) {
+						this.removeCard(i);
+						return user_Card;
+					}
+				}
+				*/
 			}
-			System.out.println("Sorry but this card does not exsist in your hand, please try again." // prompt user to change
+			
+			System.out.println("Sorry but this card does not exist in your hand, please try again." // prompt user to change
 					+ " (Enter in the 'Type' then enter the cards 'Value' )");
 			user_cardType = in.next();
 			user_cardValue = in.nextInt();
