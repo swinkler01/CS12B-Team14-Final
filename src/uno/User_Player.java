@@ -17,6 +17,10 @@ public class User_Player extends Player {
 		Scanner in = new Scanner(System.in); 
 		
 		ArrayList<Card> userPlayer_cards = super.cardsCanPlay(previousCard); //code will prompt user to enter a card and will check if the card was playable
+		System.out.print("Your current hand: ");
+		for(Card i : userPlayer_cards) { 
+			System.out.print(i);
+		}
 		System.out.println("Which card do you wish to play? (Enter in the 'Type' then enter the cards 'Value' )");
 		String user_cardType = in.next();
 		int user_cardValue = in.nextInt();
@@ -28,27 +32,38 @@ public class User_Player extends Player {
 					this.removeCard(i);
 					return user_Card;
 				}
-				/*
+				
 				if(previousCard.value == -1) {
 					if(user_Card.type == previousCard.type) {
 						this.removeCard(i);
 						return user_Card;
 					}
 				}
-				*/
 			}
 			
 			System.out.println("Sorry but this card does not exist in your hand, please try again." // prompt user to change
 					+ " (Enter in the 'Type' then enter the cards 'Value' )");
+			System.out.print("Your current hand: ");
+			for(Card i : userPlayer_cards) { 
+				System.out.print(i);
+			}
 			user_cardType = in.next();
 			user_cardValue = in.nextInt();
 			user_Card = new Card(user_cardType, user_cardValue);
 			}
 		return null;
 	}
+	
+	
+	
+	//public static void main(String[] args) {
+		
+		
+	//}
+
 }	
-	
-	
+ 
+
 	
 /*
 	while (tester == true) {
