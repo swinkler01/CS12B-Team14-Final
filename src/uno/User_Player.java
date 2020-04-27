@@ -25,7 +25,7 @@ public class User_Player extends Player {
 		while (tester) {
 			for(Card i : userPlayer_cards) {
 				if(i.type == user_Card.type && i.value == user_Card.value) {
-					this.removeCard(userPlayer_cards.indexOf(i));
+					this.removeCard(i);
 					return user_Card;
 				}
 			}

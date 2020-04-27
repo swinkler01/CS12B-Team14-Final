@@ -21,7 +21,7 @@ public class AI_Player extends Player{
 	@Override
 	public Card play(Card previousCard) {
 		Card toPlay = super.cardsCanPlay(previousCard).get(0);
-		this.removeCard(0);
+		this.removeCard(toPlay);
 				
 		// return the 1st card you can play
 		return toPlay;

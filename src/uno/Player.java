@@ -25,8 +25,19 @@ public abstract class Player {
 	 * remove card from player's hand
 	 * @param i index of the card
 	 */
-	public void removeCard(int i) {
-		this.hand.remove(i);
+	public void removeCard(Card c) {
+		for(int i=0; i<this.hand.size(); i++) {
+			if(hand.get(i).equals(c)) {
+				hand.remove(i);
+				return;
+			}
+		}
+	}
+	
+	public void printHand() {
+		for(int i=0; i<hand.size(); i++) {
+			System.out.println(hand.get(i).toString());
+		}
 	}
 
 	
