@@ -48,35 +48,39 @@ public class UnoGame {
 		this.lastPlayer = playerNum;
 	}
 	
+	public void setLastPlayedCard(String type, int value) {
+		lastPlayedCard = new Card(type, value);
+	}
+	
 	/**
 	 * initiate the game
 	 * add players to the player list
 	 * draw initial hands to the players
 	 */
-//	public void initiate() {
-//		// add players #1 to #(playerNum-1), they are AI_players
-//		deck.shuffle();
-//		for(int i=0; i<playerNumber-1; i++) {
-//			ArrayList<Card> tempHand = new ArrayList<Card>();
-//			for(int j=0; j<initialHandNum; j++) {
-//				tempHand.add(deck.drawCard());
-//			}
-//		players[i] = new AI_Player(tempHand);
-//		}
-//		// add player # playerNum, the last one is User_Player
-//		ArrayList<Card> userHand = new ArrayList<Card>();
-//		for(int j=0; j<initialHandNum; j++) {
-//			userHand.add(deck.drawCard());
-//		}
-//		players[playerNumber-1] = new User_Player(userHand);
-//		// draw one card from the deck, set it as the lastPlayedCard
-//		lastPlayedCard = deck.drawCard();
-//		System.out.println("UNO! Game Start!");
-//		System.out.printf("Initial card is %s \n", lastPlayedCard.toString());
-//	}
+	public void initiate() {
+		// add players #1 to #(playerNum-1), they are AI_players
+		deck.shuffle();
+		for(int i=0; i<playerNumber-1; i++) {
+			ArrayList<Card> tempHand = new ArrayList<Card>();
+			for(int j=0; j<initialHandNum; j++) {
+				tempHand.add(deck.drawCard());
+			}
+		players[i] = new AI_Player(tempHand);
+		}
+		// add player # playerNum, the last one is User_Player
+		ArrayList<Card> userHand = new ArrayList<Card>();
+		for(int j=0; j<initialHandNum; j++) {
+			userHand.add(deck.drawCard());
+		}
+		players[playerNumber-1] = new User_Player(userHand);
+		// draw one card from the deck, set it as the lastPlayedCard
+		lastPlayedCard = deck.drawCard();
+		System.out.println("UNO! Game Start!");
+		System.out.printf("Initial card is %s \n", lastPlayedCard.toString());
+	}
 	
 	// test AI_Players
-	public void initiate() {
+	public void initiateTest() {
 		deck.shuffle();
 		for(int i=0; i<playerNumber; i++) {
 			ArrayList<Card> tempHand = new ArrayList<Card>();
@@ -185,6 +189,9 @@ public class UnoGame {
 			for(int i=0; i<penalty; i++) {
 				players[lastPlayer].draw(deck.drawCard());
 			}
+			if(lastPlayedCard.type.equals("Wild") || lastPlayedCard.type.equals("Wild+4")) {
+				setLastPlayedCard("Red",-1);
+			}
 			System.out.printf("Player %d has no cards to play, and draw %d times \n", lastPlayer, penalty);
 			// change the penalty to default value 
 			penalty = 1;
@@ -208,7 +215,7 @@ public class UnoGame {
 	
 	public static void main(String[] args) {
 		UnoGame testGame = new UnoGame(2);
-		testGame.initiate();
+		testGame.initiateTest();
 //		System.out.println(testGame.players[0].getHand().get(0).toString());
 //		System.out.println(testGame.players[0].getHand().get(1).toString());
 //		System.out.println(testGame.players[0].getHand().get(2).toString());
