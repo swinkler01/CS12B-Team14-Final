@@ -11,7 +11,7 @@ public class AI_Player extends Player{
 	
 	}
 	
-	public Card AI_Playcard(Card previousCard){
+	public Card AI_Playcard(Card previousCard){ //returns random card that will be played
 		
 		ArrayList<Card> AI_cards = super.cardsCanPlay(previousCard);
 		Random rand = new Random(AI_cards.size());
@@ -27,23 +27,26 @@ public class AI_Player extends Player{
 		return toPlay;
 	}
 	
-	/*
-	public void draw(Card c) {
-		super.getHand().add(c);
-	}
-	
-	
-	public ArrayList<Card> cardsCanPlay(Card previousCard){
-		/*
-		ArrayList<Card> playable = new ArrayList<Card>();
-		
-		for (Card c: super.getHand()) {
-			 if(c.type == previousCard.type || c.value == previousCard.value || c.value == -1) {
-				 playable.add(c);
-			 }
-		}
-		
-		return playable;
-	}
-*/
 }
+
+
+
+/*
+public void draw(Card c) {
+	super.getHand().add(c);
+}
+
+
+public ArrayList<Card> cardsCanPlay(Card previousCard){
+	/*
+	ArrayList<Card> playable = new ArrayList<Card>();
+	
+	for (Card c: super.getHand()) {
+		 if(c.type == previousCard.type || c.value == previousCard.value || c.value == -1) {
+			 playable.add(c);
+		 }
+	}
+	
+	return playable;
+}
+*/
