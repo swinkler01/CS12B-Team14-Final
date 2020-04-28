@@ -42,7 +42,7 @@ public class User_Player extends Player {
 			}
 			
 			System.out.println("Sorry but this card does not exist in your hand, please try again." // prompt user to change
-					+ " (Enter in the 'Type' then enter the cards 'Value' )");
+					+ " (Enter in the 'Type' then enter the cards 'Value' )"); //Should show the user the format for the type/value ie Upper-lower
 			System.out.print("Your current hand: ");
 			for(Card i : userPlayer_cards) { 
 				System.out.print(" "+i+" ");
