@@ -1,6 +1,7 @@
 package uno;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class UnoGame {
 	/**
@@ -209,6 +210,17 @@ public class UnoGame {
 		System.out.println("Game is over");
 		// print out the winner
 		System.out.printf("Winner is Player%s", this.gameDone());
+		Scanner in = new Scanner(System.in);
+		// prompt user for new game
+		System.out.println("Play again? (y/n): ");
+		String user_answer = in.nextLine();
+		if(user_answer.equals("y"){
+			initiateTest(); //filler method
+			//should direct to main method for new game
+		} else if(user_answer.equals("n"){
+			System.out.println("Goodbye!");
+		}
+			
 		
 		
 	}
