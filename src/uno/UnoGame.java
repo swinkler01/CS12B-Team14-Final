@@ -210,11 +210,7 @@ public class UnoGame {
 		}
 		System.out.println("Game is over");
 		// print out the winner
-//<<<<<<< HEAD
-		System.out.printf("Winner is Player %s", this.gameDone());
-//=======
-		System.out.printf("Winner is Player%s%n", this.gameDone());
-//>>>>>>> branch 'master' of https://github.com/swinkler01/CS12B-Team14-Final.git
+		System.out.printf("Winner is Player %s%n", this.gameDone());
 		Scanner in = new Scanner(System.in);
 		// prompt user for new game
 		System.out.println("Play again? (y/n): ");
