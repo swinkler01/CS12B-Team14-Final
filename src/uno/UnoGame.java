@@ -184,6 +184,7 @@ public class UnoGame {
 			// choose one card to play
 			lastPlayedCard = players[lastPlayer].play(lastPlayedCard);
 			this.updatePenalty();
+			deck.addToDiscard(lastPlayedCard);
 			System.out.printf("Player %d played card %s \n", lastPlayer, lastPlayedCard.toString());
 		}else { // next player have no card to play
 			// draw cards according to the penalty
@@ -193,7 +194,7 @@ public class UnoGame {
 			if(lastPlayedCard.type.equals("Wild") || lastPlayedCard.type.equals("Wild+4")) {
 				setLastPlayedCard("Red",-1);
 			}
-			System.out.printf("Player %d has no cards to play, and draw %d times \n", lastPlayer, penalty);
+			System.out.printf("Player %d has no cards to play, and draws %d times \n", lastPlayer, penalty);
 			// change the penalty to default value 
 			penalty = 1;
 			
@@ -209,7 +210,11 @@ public class UnoGame {
 		}
 		System.out.println("Game is over");
 		// print out the winner
+//<<<<<<< HEAD
 		System.out.printf("Winner is Player %s", this.gameDone());
+//=======
+		System.out.printf("Winner is Player%s%n", this.gameDone());
+//>>>>>>> branch 'master' of https://github.com/swinkler01/CS12B-Team14-Final.git
 		Scanner in = new Scanner(System.in);
 		// prompt user for new game
 		System.out.println("Play again? (y/n): ");
