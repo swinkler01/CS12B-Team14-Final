@@ -216,8 +216,8 @@ public class UnoGame {
 		System.out.println("Play again? (y/n): ");
 		String user_answer = in.nextLine();
 		if(user_answer.equals("y")){
-			initiateTest(); //filler method
-			//should direct to main method for new game
+			UnoGame testGame = new UnoGame(2);
+			testGame.initiateTest();
 		} else if(user_answer.equals("n")){
 			System.out.println("Goodbye!");
 		}
