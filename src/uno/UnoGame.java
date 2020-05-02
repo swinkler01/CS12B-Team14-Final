@@ -216,9 +216,11 @@ public class UnoGame {
 		System.out.println("Play again? (y/n): ");
 		String user_answer = in.nextLine();
 		if(user_answer.equals("y")){
+			// if yes create new standard game and run
 			UnoGame testGame = new UnoGame(2);
 			testGame.initiateTest();
 		} else if(user_answer.equals("n")){
+			// if no
 			System.out.println("Goodbye!");
 		}
 			
