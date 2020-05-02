@@ -53,13 +53,6 @@ public class User_Player extends Player {
 			}
 		return null;
 	}
-	
-	
-	
-	//public static void main(String[] args) {
-		
-		
-	//}
 
 }	
  
