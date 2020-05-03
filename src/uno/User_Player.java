@@ -55,30 +55,3 @@ public class User_Player extends Player {
 	}
 
 }	
- 
-
-	
-/*
-	while (tester == true) {
-		for(Card i : userPlayer_cards) {
-			if(user_Card.type == i.type && user_Card.value == i.value) {
-				this.removeCard(userPlayer_cards.indexOf(i));
-				tester = false;
-			}
-		
-		if(tester == true) {
-			System.out.println("Sorry but this card does not exsist in your hand, please try again."
-			+ " (Enter in the 'Type' then enter the cards 'Value' )");
-			user_cardType = in.next();
-			user_cardValue = in.nextInt();
-			user_Card = new Card(user_cardType, user_cardValue);
-				}	
-		}
-	}
-	return user_Card;
-		 
-}
-*/
-
-
-
