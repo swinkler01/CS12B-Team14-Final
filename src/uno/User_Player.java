@@ -21,7 +21,7 @@ public class User_Player extends Player {
 		for(Card i : userPlayer_cards) { 
 			System.out.print(" "+i+" ");
 		}
-		System.out.println("Which card do you wish to play? (Enter in the 'Type' then enter the cards 'Value' )");
+		System.out.println("Which card do you wish to play? (Enter in the 'Type' ie Red then enter the cards 'Value' ie 7)"); //added for user formatting purposes
 		String user_cardType = in.next();
 		int user_cardValue = in.nextInt();
 		Card user_Card = new Card(user_cardType, user_cardValue);
@@ -33,7 +33,7 @@ public class User_Player extends Player {
 					return user_Card;
 				}
 				
-				if(previousCard.value == -1) {
+				if(previousCard.value == -1) { //contingency if the last played card is a Wild + 4 card
 					if(user_Card.type == previousCard.type) {
 						this.removeCard(i);
 						return user_Card;
@@ -49,7 +49,7 @@ public class User_Player extends Player {
 			}
 			user_cardType = in.next();
 			user_cardValue = in.nextInt();
-			user_Card = new Card(user_cardType, user_cardValue);
+			user_Card = new Card(user_cardType, user_cardValue); // create player card
 			}
 		return null;
 	}
