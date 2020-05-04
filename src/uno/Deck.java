@@ -21,7 +21,7 @@ public class Deck {
 	/*
 	 * used in addCards to loop over card types
 	 */
-	private final String[] colors = { "Blue", "Yellow", "Green", "Red" };
+	private final String[] colors = { "BLUE", "YELLOW", "GREEN", "RED" };
 
 	/*
 	 * Constructor, adds cards to the deck
@@ -44,8 +44,8 @@ public class Deck {
 			}
 		}
 		for (int i = 0; i < 4; i++) {
-			this.deck.add(new Card("Wild"));
-			this.deck.add(new Card("Wild Draw 4"));
+			this.deck.add(new Card("WILD"));
+			this.deck.add(new Card("WILD DRAW 4"));
 		}
 	}
 

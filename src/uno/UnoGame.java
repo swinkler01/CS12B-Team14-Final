@@ -77,6 +77,7 @@ public class UnoGame {
 		// draw one card from the deck, set it as the lastPlayedCard
 		lastPlayedCard = deck.drawCard();
 		System.out.println("UNO! Game Start!");
+		System.out.printf("You are Player %s! \n", this.playerNumber-1);
 		System.out.printf("Initial card is %s \n", lastPlayedCard.toString());
 	}
 	
@@ -163,7 +164,7 @@ public class UnoGame {
 			}else {
 				penalty += 2;
 			}			
-		}else if(lastPlayedCard.value==-1 && lastPlayedCard.type.equals("Wild+4")) {// last card is +4
+		}else if(lastPlayedCard.value==-1 && lastPlayedCard.type.equals("WILD DRAW 4")) {// last card is +4
 			if(penalty==1) {
 				penalty = 4;
 			}else {
@@ -191,8 +192,9 @@ public class UnoGame {
 			for(int i=0; i<penalty; i++) {
 				players[lastPlayer].draw(deck.drawCard());
 			}
-			if(lastPlayedCard.type.equals("Wild") || lastPlayedCard.type.equals("Wild+4")) {
-				setLastPlayedCard("Red",-1);
+			// Assume red can be played after a wild card
+			if(lastPlayedCard.type.equals("WILD") || lastPlayedCard.type.equals("WILD DRAW 4")) {
+				setLastPlayedCard("RED",-1);
 			}
 			System.out.printf("Player %d has no cards to play, and draws %d times \n", lastPlayer, penalty);
 			// change the penalty to default value 
@@ -211,52 +213,58 @@ public class UnoGame {
 		System.out.println("Game is over");
 		// print out the winner
 		System.out.printf("Winner is Player %s%n", this.gameDone());
-		Scanner in = new Scanner(System.in);
-		// prompt user for new game
-		System.out.println("Play again? (y/n): ");
-		String user_answer = in.nextLine();
-		if(user_answer.equals("y")){
-			// if yes create new standard game and run
-			UnoGame testGame = new UnoGame(2);
-			testGame.initiateTest();
-		} else if(user_answer.equals("n")){
-			// if no
-			System.out.println("Goodbye!");
-		}
 			
 		
 		
 	}
 	
 	public static void main(String[] args) {
-		UnoGame testGame = new UnoGame(2);
-		testGame.initiateTest();
-//		System.out.println(testGame.players[0].getHand().get(0).toString());
-//		System.out.println(testGame.players[0].getHand().get(1).toString());
-//		System.out.println(testGame.players[0].getHand().get(2).toString());
-//		System.out.println(testGame.players[0].getHand().get(3).toString());
-//		System.out.println(testGame.players[0].getHand().get(4).toString());
+		System.out.println("Welcome to UNO!");
+		System.out.println("Do you wanna play against CPUs or see CPUs play agains each other?");
+		System.out.println("Enter 1 to play against CPUs, 2 to see CPUs play: ");
+		Scanner scan = new Scanner(System.in);
+		int playType = scan.nextInt();
+		if(playType==1) {// user against CPUs
+			System.out.println("The game will be you against CPUs.");
+			System.out.println("How many Players do you want in total(including you)?");
+			int playerNumber = scan.nextInt();
+			UnoGame userGame = new UnoGame(playerNumber);
+			userGame.initiate();
+			userGame.run();		
+		}else if(playType==2) {// CPUs against each other
+			System.out.println("The game will be CPUs against each other.");
+			System.out.println("How many CPUs do you want?");
+			int cpuNumber = scan.nextInt();
+			UnoGame cpuGame = new UnoGame(cpuNumber);
+			cpuGame.initiateTest();
+			cpuGame.run();
+		}
 		
-//		System.out.println("player 0's hand: **************");
-//		testGame.players[0].printHand();
-//		System.out.println("player 1's hand: **************");
-//		testGame.players[1].printHand();
-//		
-//		testGame.oneRound();
-//		System.out.println("player 0's hand: **************");
-//		testGame.players[0].printHand();
-//		System.out.println("player 1's hand: **************");
-//		testGame.players[1].printHand();
-//		System.out.println(" ");
-//		
-//		testGame.oneRound();
-//		System.out.println("player 0's hand: **************");
-//		testGame.players[0].printHand();
-//		System.out.println("player 1's hand: **************");
-//		testGame.players[1].printHand();
+//		UnoGame testGame = new UnoGame(4);
+//		// test 4 computers play against each other
+//		testGame.initiateTest();
+//		testGame.run();
 		
+//		UnoGame userGame = new UnoGame(4);
+//		// test 3 CPUs against one user player
+//		userGame.initiate();
+//		userGame.run();
 		
-		testGame.run();
+
+		
+//		Scanner in = new Scanner(System.in);
+//		// prompt user for new game
+//		System.out.println("Play again? (y/n): ");
+//		String user_answer = in.nextLine();
+//		if(user_answer.equals("y")){
+//			// if yes create new standard game and run
+//			testGame.initiateTest();
+//			testGame.run();
+//		} else if(user_answer.equals("n")){
+//			// if no
+//			System.out.println("Goodbye!");
+//		}
+		
 		
 			
 		

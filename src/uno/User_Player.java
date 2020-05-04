@@ -17,18 +17,39 @@ public class User_Player extends Player {
 		Scanner in = new Scanner(System.in); 
 		
 		ArrayList<Card> userPlayer_cards = super.cardsCanPlay(previousCard); //code will prompt user to enter a card and will check if the card was playable
-		System.out.print("Your current hand: ");
-		for(Card i : userPlayer_cards) { 
-			System.out.print(" "+i+" ");
+		System.out.println("Your current hand: ");
+		ArrayList<Card> userPlayer_allCards = this.getHand();
+		for(Card i : userPlayer_allCards) { 
+			System.out.println(" "+i+" ");
 		}
-		System.out.println("Which card do you wish to play? (Enter in the 'Type' ie Red then enter the cards 'Value' ie 7)"); //added for user formatting purposes
-		String user_cardType = in.next();
-		int user_cardValue = in.nextInt();
+		System.out.println("Cards can be played: ");
+		for(Card i : userPlayer_cards) { 
+			System.out.println(" "+i+" ");
+		}
+		System.out.println("Which card do you wish to play? (Enter in the 'Type' ie Red,Green,Yellow,Blue,Wild,Wild draw 4. then enter the cards 'Value' ie 7,Skip,Draw 4)"); //added for user formatting purposes
+		System.out.println("Please note if you choose a Wild card, enter value -1");
+		
+		
+		String user_cardType = in.nextLine().toUpperCase();
+		int user_cardValue = -1;
+		if(in.hasNextInt()) {
+			user_cardValue = in.nextInt();
+		}else {// next input is not Integer, like Skip or Reverse
+			if(in.next().toLowerCase().equals("skip")) { // user input "skip"
+				user_cardValue = 10;
+			}else if(in.next().toLowerCase().equals("reverse")) { // user input "reverse"
+				user_cardValue = 11;
+			}else if(in.next().toLowerCase().equals("draw 2")) { // user input "draw 2"
+				user_cardValue = 12;
+			}
+		}
+		
+		
 		Card user_Card = new Card(user_cardType, user_cardValue);
 		
 		while (tester) { //while statement will go on till users choice matches on in his hand that is possible to play 
 			for(Card i : userPlayer_cards) {
-				if(i.type == user_Card.type && i.value == user_Card.value) {
+				if(i.equals(user_Card)) {
 					this.removeCard(i);
 					return user_Card;
 				}
@@ -43,9 +64,9 @@ public class User_Player extends Player {
 			
 			System.out.println("Sorry but this card does not exist in your hand, please try again." // prompt user to change
 					+ " (Enter in the 'Type' then enter the cards 'Value' )"); //Should show the user the format for the type/value ie Upper-lower
-			System.out.print("Your current hand: ");
+			System.out.println("Cards can be played: ");
 			for(Card i : userPlayer_cards) { 
-				System.out.print(" "+i+" ");
+				System.out.println(" "+i+" ");
 			}
 			user_cardType = in.next();
 			user_cardValue = in.nextInt();
